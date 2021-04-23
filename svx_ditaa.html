@@ -1,0 +1,51 @@
+<h1>Graphics Related Helper Code</h1>
+<p>Contains graphics related helper code. Lots of the draw and impress code is in this shared library.</p>
+<ul>
+<li>
+<p><code>xoutdev</code></p>
+<p>this is where a lot of wht work would happen to move to the canvas. (what does that mean?)</p>
+</li>
+<li>
+<p><code>svdraw</code></p>
+<p>transparent gradient stuff. [seriously? surely much more, too]</p>
+</li>
+</ul>
+<h2>SdrObject</h2>
+<p>The shapes you can see in LibreOffice (like rectangle, etc.) are SdrObjects.
+They are declared as a hierarchy:</p>
+<p><img alt="images/diagram-1.png" src="images/diagram-1.png" /></p>
+<p>The above is incomplete of course.</p>
+<h2>SdrModel / SdrView</h2>
+<p>Copied from <code>svdview.hxx</code>:</p>
+<p>First of all the app creates a <code>SdrModel</code>.
+  Then it opens a Win and creates a <code>SdrView</code>.
+  <code>ShowSdrPage()</code> announces a page at <code>SdrView</code>.
+  It's possible to show <code>SdrView</code> in any Wins at once.</p>
+<p><code>SdrView</code> can show as many Wins as it wants at once. Pages are announced
+  or checked out with the help of <code>ShowSdrPage()</code>/<code>HideSdrPage()</code>. For every announced
+  page there is a <code>SdrPageView</code> instance in container aPages. If more than one page
+  is showed, you have to pay attention that the offset parameter of <code>ShowSdrPage()</code>
+  is conformed to the size of the page (to prevent overlapping of two pages).</p>
+<p><code>SdrView</code> itself is inherited from many objects in a chain of inheritance (all
+that starts with <code>SdrPaintView</code> - that is itself inherited from few classes
+too):</p>
+<p><img alt="images/diagram-2.png" src="images/diagram-2.png" /></p>
+<p>From <code>SdrView</code> on, it is not flat, but a real hierarchy again.</p>
+<h2>Drawing Layer / SdrObject(s)</h2>
+<p>See <code>drawinglayer/README.md</code> for general information about drawinglayer.</p>
+<p>Below is the class diagram that comes from
+<a href="http://www.openoffice.org/marketing/ooocon2006/presentations/wednesday_g11.odp">http://www.openoffice.org/marketing/ooocon2006/presentations/wednesday_g11.odp</a>,
+slide number 6.</p>
+<p><img alt="images/diagram-3.png" src="images/diagram-3.png" /></p>
+<p>For <code>SdrObjects</code>, there are own <code>DrawingLayer</code> primitives in
+<code>svx/source/sdr/primitive2d</code></p>
+<p>The <code>ViewContact</code> / <code>ViewObject</code> / <code>ViewObjectContact</code> are in <code>svx/source/sdr/contact</code>
+Decomposes the <code>SdrObjects</code>, and does all sort of operations on them.</p>
+<p>If the number of visualizable objects (e.g. <code>SdrObjects</code>) is <code>X</code>, and the number of
+<code>SdrViews</code> is <code>Y</code>, then:</p>
+<ul>
+<li>there are <code>X</code> <code>ViewContact</code> instances (1:1 relation with a visualizable object)</li>
+<li>there are <code>Y</code> <code>ObjectContact</code> instances (1:1 relation with an <code>SdrView</code>)</li>
+<li>there are <code>X*Y</code> <code>ViewObjecContact</code> instances (1:N relation to both
+  visualizable objects and <code>SdrView</code>s)</li>
+</ul>
