@@ -1,0 +1,229 @@
+/* SPDX-FileCopyrightText: 2021 Ilmari Lauhakangas <ilmari.lauhakangas@libreoffice.org>
+   SPDX-License-Identifier: CC0-1.0 */
+
+.donation_container {
+    background: #fff;
+    padding: 20px;
+    border: 5px solid #eee;
+    border-radius: .6rem;
+    display: grid;
+    justify-items: center;
+}
+.donation_chooser {
+    display: grid;
+    justify-items: center;
+}
+label[for=amount] {
+    font-size: var(--m-7);
+    margin-bottom: 20px;
+}
+.amount_currency {
+    display: grid;
+    grid-template-columns: minmax(70px, 130px) minmax(70px, 130px);
+    column-gap: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#amount {
+    grid-column: 1;
+}
+#currency {
+    grid-column: 2;
+}
+.donation_type {
+    margin-bottom: 30px;
+}
+input[type=radio] + label, .donation_explainer {
+    font-size: var(--m-6);
+}
+input[type=radio] {
+    width: var(--m-6);
+    height: var(--m-6);
+}
+.paypal-button {
+    padding: 15px 30px;
+    border: 1px solid #FF9933;
+    border-radius: 5px;
+    background: #ffc439;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.paypal-button-title {
+    font-size: var(--m-5);
+    color: #505050;
+    font-weight: bold;
+}
+.paypal-logo {
+    line-height: 0.75;
+}
+.donation_explainer {
+    text-align: center;
+    max-width: 750px;
+    margin: 40px 0 0 0;
+}
+#info {
+    margin-top: 20px;
+    /* top margin of topmost paragraphs overflows without this */
+    display: grid;
+}
+#info .card {
+    padding: 15px;
+    margin-bottom: 20px;
+    word-break: break-word;
+    hyphens: auto;
+    /* have to use flex container to make inline-block items behave like blocks */
+    display: flex;
+    flex-direction: column;
+}
+#info .card p {
+    font-size: var(--m-6);
+    margin: 15px 0;
+    /* avoid top & bottom margin collapse */
+    display: inline-block;
+}
+#info .info_title {
+    font-size: var(--m-7);
+    font-weight: bold;
+}
+#info .coingate-button a::after {
+    content: "";
+}
+#info .coingate-button img {
+    max-width: 250px;
+}
+#infographic {
+    text-align: center;
+}
+.thanks {
+    font-size: var(--m-12);
+    font-weight: 900;
+    margin: 0 0 20px 0;
+}
+.infographic_title {
+    font-size: var(--m-6);
+    font-weight: bold;
+    margin: 0 0 40px 0;
+}
+.donate_today {
+    font-size: var(--m-7);
+    font-weight: bold;
+    /* avoid collapsing margins with paragraph above */
+    display: inline-block;
+}
+.graphic_grid {
+    background: var(--lightest-gray);
+    border-radius: .6rem;
+}
+.graphic_grid p {
+    padding: 20px;
+    font-size: var(--m-5);
+}
+.graphic_grid img {
+    display: block;
+    height: 72px;
+    margin: 0 auto 20px auto;
+}
+#community {
+    padding: 1.25rem 1.875rem;
+    margin: 15px 0 20px 0;
+}
+#community h4 {
+    font-size: var(--m-9);
+    margin: 0 0 15px 0;
+}
+#community p {
+    margin: 0;
+}
+.community_text {
+    font-size: var(--m-7);
+}
+#community .button {
+    padding: 0.95rem 1.85rem;
+    margin: 20px 0;
+}
+@media (min-width:768px) {
+    .donation_container {
+        padding: 40px;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 50% 50%;
+        column-gap: 30px;
+    }
+    .donation_chooser {
+        grid-column: 1 / span 2;
+    }
+    .paypal-button, .stripe-button {
+        grid-row: 2;
+    }
+    .paypal-button {
+        grid-column: 1;
+        justify-self: right;
+        margin-bottom: 0;
+    }
+    .stripe-button {
+        grid-column: 2;
+        justify-self: left;
+    }
+    .donation_explainer {
+        grid-row: 3;
+        grid-column: 1 / span 2;
+    }
+    #info .card {
+        padding: 15px 30px;
+    }
+    #info .coingate-button img {
+        max-width: 300;
+    }
+    .graphic_grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto auto;
+    }
+    .graphic_grid p {
+        grid-column-end: span 4;
+    }
+    #community {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-auto-flow: column;
+        grid-gap: 0 60px;
+        padding: 2.5rem 3.75rem;
+        margin: 30px 0 40px 0;
+    }
+    #community .button {
+        justify-self: right;
+        align-self: center;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        margin: 0;
+    }
+}
+
+@media (min-width:1024px) {
+    #info {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
+        grid-auto-flow: column;
+        gap: 20px;
+    }
+    #info .card {
+        margin: 0;
+    }
+    #info .card:last-child {
+        grid-row: 1 / span 2;
+    }
+    #infographic {
+        margin-top: 20px;
+    }
+    .graphic_grid p {
+        grid-column-end: span 4;
+        padding: 40px;
+        margin: 20px;
+    }
+    .graphic_grid img {
+        margin-bottom: 40px;
+    }
+}

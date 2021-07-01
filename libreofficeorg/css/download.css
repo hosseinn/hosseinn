@@ -1,0 +1,183 @@
+/* SPDX-FileCopyrightText: 2021 Ilmari Lauhakangas <ilmari.lauhakangas@libreoffice.org>
+   SPDX-License-Identifier: CC0-1.0 */
+
+#for_business {
+    padding: 1.25rem 1.875rem;
+    margin: 15px 0 20px 0;
+}
+#for_business h4 {
+    font-size: var(--m-9);
+    margin: 0 0 15px 0;
+}
+.business_text, .choose_text, .version_desc {
+    font-size: var(--m-7);
+}
+#for_business .button, #other_versions .button {
+    padding: 0.95rem 1.85rem;
+}
+#for_business .button {
+    margin: 20px 0;
+}
+#download_libreoffice {
+    background: var(--lightest-gray);
+}
+#download_libreoffice > div {
+    margin: 40px 0 60px 0;
+}
+#download_libreoffice img {
+    width: 170px;
+}
+.fresh {
+    border: 4px solid var(--main-brand);
+    margin-bottom: 20px;
+}
+p.version_heading {
+    font-size: var(--m-9);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+#download_libreoffice .button {
+    margin: 30px 0 20px 0;
+}
+.version_details {
+    font-size: var(--m-5);
+}
+#download_libreoffice .version_details {
+    margin-top: 10px;
+}
+#other_versions {
+    text-align: center;
+}
+#other_versions .section-title {
+    text-align: initial;
+}
+.chooser {
+    display: grid;
+    grid-gap: 20px 10px;
+    grid-template-columns: auto;
+    justify-content: center;
+}
+.chooser label {
+    align-self: center;
+    grid-column: 1/-1;
+    max-width: var(--max-w-sm);
+    text-align: initial;
+    font-size: var(--m-6);
+}
+.chooser select {
+    align-self: center;
+    grid-column: 1/-1;
+    max-width: var(--max-w-xxs);
+    margin-bottom: 10px;
+    font-size: 1.375rem;
+}
+#visit_the_wiki {
+    background: var(--lightest-gray);
+    border-radius: .6rem;
+    border: 1px solid var(--darker-gray);
+    font-size: var(--m-7);
+    margin: var(--m-10) 0;
+    padding: 20px 40px;
+}
+#visit_the_wiki p {
+    margin: 0;
+}
+#visit_the_wiki .notes-icon {
+    display: none;
+}
+#visit_the_wiki .wiki-link {
+    margin-bottom: 20px;
+}
+.notes-icon img {
+    width: 78px;
+}
+@media (min-width:768px) {
+    .chooser {
+        grid-template-columns: var(--max-w-sm) var(--max-w-xxs);
+    }
+    .chooser label {
+        grid-column: auto;
+    }
+    .chooser select {
+        grid-column: auto;
+        margin-bottom: 0;
+    }
+    #for_business {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-auto-flow: column;
+        grid-gap: 0 60px;
+        padding: 2.5rem 3.75rem;
+        margin: 30px 0 40px 0;
+    }
+    #for_business .button {
+        justify-self: right;
+        align-self: center;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        margin: 0;
+    }
+    #download_libreoffice .button {
+        max-width: 436px;
+    }
+    #visit_the_wiki {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-gap: 20px 40px;
+    }
+    #visit_the_wiki .notes-icon {
+        display: block;
+        grid-row: 1;
+        grid-column: 1;
+        justify-self: center;
+        align-self: center;
+    }
+    #visit_the_wiki .openpgp {
+        grid-column: 1 / span 2;
+    }
+}
+
+@media (min-width:1024px) {
+    .card_container {
+        display: grid;
+        grid-template-columns: minmax(auto, 550px) minmax(auto, 550px);
+        grid-auto-rows: auto auto auto auto auto;
+        column-gap: 64px;
+    }
+    #download_libreoffice .card {
+        grid-template-rows: subgrid;
+        grid-row: auto / span 5;
+        display: grid;
+    }
+    .fresh {
+        margin: 0;
+    }
+    #visit_the_wiki {
+        grid-gap: 20px 80px;
+        margin: var(--m-25) 0;
+        padding: 40px 122px;
+    }
+    #visit_the_wiki .notes-icon {
+        grid-row: 1 / span 2;
+        justify-self: center;
+        align-self: center;
+        margin: 0;
+    }
+    .notes-icon img {
+        width: 156px;
+    }
+    #visit_the_wiki .wiki-link {
+        align-self: end;
+        margin: 0;
+    }
+    #visit_the_wiki .openpgp {
+        grid-column: 2;
+    }
+    @supports not (grid-template-columns: subgrid) {
+        #download_libreoffice .button {
+            align-self: center;
+        }
+    }
+}
